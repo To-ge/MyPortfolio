@@ -1,0 +1,230 @@
+.detail{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(transparent,rgba(0,0,0,1));
+
+  .detail-top{
+    width: 100%;
+    height: 50px;
+    position: relative;
+
+    .return-button{
+      width: 70px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 0 2px gray ,inset 0 0 10px gray;
+      background-color: lightgray;
+      position: absolute;
+      top: 0;
+      left: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:active{
+        box-shadow:inset 0 0 10px gray;
+        background-color: lightblue;
+        color: lightgray;
+        top: 2px;
+      }
+    }
+
+    .delete-list{
+      width: 70px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 0 2px gray ,inset 0 0 10px gray;
+      background-color: lightpink;
+      position: absolute;
+      top: 0;
+      right: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:active{
+        box-shadow:inset 0 0 10px gray;
+        background-color: lightcoral;
+        color: lightgray;
+        top: 2px;
+      }
+
+    }
+      .warning{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        background-color:lightgray ;
+        color: white;
+        padding: 10px 20px;
+        position: absolute;
+        top: 10px;
+        right: 50px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px gray;
+        z-index: 100;
+
+        .warntext{
+          font-size: 12px;
+          text-shadow: 0 0 10px black;
+        }
+        .warnbottun{
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          div{
+            cursor: pointer;
+            margin-right: 15px;
+            font-size: 13px;
+            padding: 5px;
+            text-shadow: 2px 2px 5px black;
+          }
+        }
+    }
+  }
+
+  .detail-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+    background-color: burlywood;
+    background: repeating-linear-gradient(0deg, burlywood 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, burlywood 0.4em, #757575 0.5em); 
+    border-radius: 20px;
+    box-shadow: 0 0  20px white;
+
+    .top{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 10px;
+
+      .title{
+        width: 120px;
+        font-family:'Times New Roman', Times, serif;
+        background-color: aquamarine;
+        box-shadow: inset 0 0 20px brown;
+        padding: 5px 10px;
+        margin: 5px 20px;
+        text-align: center;
+        flex: 1;
+        
+        span{
+          font-weight: bold;
+        }
+      }
+
+      .add-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 4;
+
+        input{
+          width: 70%;
+          padding: 5px 10px;
+          outline: none;
+          margin-right: 20px;
+        }
+
+        button{
+          cursor: pointer;
+          padding: 5px 13px;
+          background-color: azure;
+          border: none;
+          border-radius: 5px;
+          box-shadow: inset 0 0 5px lightgray, 0 0 8px black;
+          outline: none;
+
+          &:active{
+            background-color: lightsalmon;
+          }
+        }
+      }
+    }
+    .merit-list{
+      width: 90%;
+      height: 80%;
+      background-color: white;
+      box-shadow: inset 0 0 20px black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+
+      .text{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+
+        h3{
+          display: inline-block;
+          margin-left: 30px;
+          font-family:Verdana, Geneva, Tahoma, sans-serif;
+          color: rgb(48, 177, 48);
+        }
+      }
+        
+      ul{
+        width: 80%;
+        height: 80%;
+
+        li{
+          list-style: none;
+          display: flex;
+          align-items: center;
+          border-bottom: 2px solid lightgray;
+          margin: 5px 20px;
+          position: relative ;
+
+          .warning{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 50px;
+            background-color:lightgray ;
+            color: white;
+            padding: 10px 20px;
+            position: absolute;
+            top: -100%;
+            left: 75%;
+            border-radius: 20px;
+            box-shadow: 0 0 10px gray;
+
+            .warntext{
+              font-size: 12px;
+              text-shadow: 0 0 10px black;
+            }
+            .warnbottun{
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              div{
+                cursor: pointer;
+                margin-right: 15px;
+                font-size: 13px;
+                padding: 5px;
+                text-shadow: 2px 2px 5px black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

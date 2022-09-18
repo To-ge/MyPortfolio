@@ -1,0 +1,440 @@
+
+@mixin button-active(){
+  transform: translate(5px, 5px);
+  box-shadow: inset 3px 3px 20px lightgray;
+}
+
+.mlb{
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-image: linear-gradient(135deg, #6c22bd, #8b25bb, #a52bb9, #bc34b7, #d040b5, #e645a5, #f55195, #ff6188, #ff796e, #ff965b, #f5b255, #e1cd60);
+  position: relative;
+
+  .mlb-top{
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    .mlb-title{
+      position: relative;
+      font-size: 70px;
+      font-weight: bold;
+      text-align:center;
+      line-height:0.95em;
+      color: transparent;
+      text-shadow: 5px 5px 10px black;
+      margin-top: 30px;
+
+      &::before{
+        position: absolute;
+        content:"Major League Baseball";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(0deg, #757575 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, #9E9E9E 0.4em, #757575 0.5em); 
+        background-clip: text;
+        text-shadow: none;
+      }
+    }
+    .mlb-desc{
+      color: white;
+      font-size: 20px;
+      text-shadow: 0 0 4px white;
+    }
+  }
+
+  .select-area{
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    .mvp-conflict{
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-image: linear-gradient(135deg, #fc00ff 0, #00dbde 100%);
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 5px 5px 10px 7px gray;
+      cursor: pointer;
+      margin: 0 30px;
+      text-shadow: 2px 2px 10px black;
+      z-index: 100;
+      
+      &:active{
+        @include button-active();
+      }
+
+      .select-panel{
+        width: 230px;
+        height: 200px;
+        background-color: lightblue;
+        border-radius: 10px;
+        z-index: 100;
+        padding: 20px;
+        border: 5px solid rgb(87, 244, 244);
+        box-shadow: inset 0 0 10px 5px black, 0 0 5px black;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        animation: showPanel ease-in-out 1s;
+
+        .league-name{
+          width: 100%;
+          height: 25px;
+          text-align: center;
+        }
+
+        .list{
+          width: 100%;
+          height: 100%;
+        }
+        .mvp::before{
+          content: "MVP: ";
+          color: #d36950;
+          filter:drop-shadow(3px 3px 0 yellow)
+        }
+      }
+    }
+    .homerun{
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      background-image: linear-gradient(45deg, #f4c14e, #d36950);
+      box-shadow: 5px 5px 10px 7px gray;
+      cursor: pointer;
+      margin: 0 30px;
+      text-shadow: 2px 2px 10px black;
+
+      &:active{
+        @include button-active();
+      }
+      .select-panel{
+        width: 230px;
+        height: 200px;
+        background-color: lightsalmon;
+        border-radius: 10px;
+        z-index: 200;
+        padding: 20px;
+        border: 5px solid orangered;
+        box-shadow: inset 0 0 10px 5px black, 0 0 5px black;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        animation: showPanel ease-in-out 1s;
+
+        .list{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+    }
+    .strike-out{
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: bold;
+      background-image: linear-gradient(45deg, #a4f44e, #50d3c4);
+      box-shadow: 5px 5px 10px 7px gray;
+      cursor: pointer;
+      margin: 0 30px;
+      text-shadow: 2px 2px 10px black;
+
+      &:active{
+        @include button-active();
+      }
+      .select-panel{
+        width: 230px;
+        height: 200px;
+        background-color: rgb(199, 250, 199);
+        border-radius: 10px;
+        z-index: 200;
+        padding: 20px;
+        border: 5px solid rgb(62, 225, 62);
+        box-shadow: inset 0 0 10px 5px black, 0 0 5px black;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+        animation: showPanel ease-in-out 1s;
+
+
+        .list{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    @keyframes showPanel {
+      0%{
+        transform:translateZ(-50px);
+        opacity:0;
+      }
+      100%{
+        transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+
+  }
+
+  .angels{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    z-index: 10;
+
+    .select-box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: linear-gradient(to left, rgb(38, 38, 103), rgb(80, 80, 158) 30%, #eee 40%, rgb(219, 51, 51) 60%, rgb(219, 51, 51) 100%);
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 10px black;
+      font-weight: bold;
+      color: rgb(99, 13, 13);
+      text-shadow: 2px 2px 2px white, -2px -2px 2px white;
+
+      ul{
+        width: 270px;
+        position: absolute;
+        top: 38px;
+        left: 0;
+        background-color: white;
+        opacity: 0.9;
+        box-shadow:inset 5px 5px 10px gray, 0 0 10px black;
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+        li{
+          list-style: none;
+          border-bottom: 1px solid rgb(155, 215, 155) ;
+          margin-bottom: 5px;
+          padding-bottom: 0;
+          line-height: 100%;
+          cursor: pointer;
+        }
+        :nth-child(n):hover{
+          text-shadow: 3px 3px rgb(155, 215, 155);
+          transform:scale(1.5);
+          transition: all ease 0.5s;
+        }
+      }
+    }
+  }
+
+  .stadium{
+    width: 80vw;
+    height: 120vh;
+    position: relative;
+
+      @keyframes flowing{
+        0% {
+          transform: translateY(-4px) rotate(-45deg);
+          filter: drop-shadow(0px 21px 4px black),
+        }
+      
+        100% {
+          transform: translateY(4px) rotate(-45deg);
+          filter: drop-shadow(0px 13px 4px black),
+        }
+      }
+
+    .outfield-area{
+      position: absolute;
+      top: 10px;
+      left: 25%;
+      width: 500px;
+      height: 500px;
+      border-radius: 44% 7% 64%;
+      background-color: rgb(25, 206, 25);
+      transform: rotate(45deg);
+      background-image: repeating-linear-gradient(70deg, rgb(25, 206, 25), rgb(25, 206, 25) 50px, rgb(112, 232, 112) 50px,rgb(112, 232, 112) 90px);
+      box-shadow: 0 0 10px 20px black;
+
+      .player-detail{
+        position: absolute;
+        top: -295px;
+        right:-63px;
+        width: 250px;
+        height: 200px;
+        background-color: white;
+        border: 5px solid rgb(38, 38, 103);
+        transform: rotate(-45deg);
+        z-index: 60;
+        border-radius: 20px;
+        box-shadow:0 0 0 8px rgb(219, 51, 51), 0 0 20px 7px white;
+        display: flex;
+        align-items: center;
+
+        img{
+          flex: 1;
+          width: 120px;
+          height: 120px;
+          margin-left:10px ;
+        }
+
+        ul{
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          li{
+            list-style: none;
+
+            span{
+              font-size: 15px;
+              color: gray;
+            }
+          }
+        }
+      }
+
+      .middlefield-area{
+        position: absolute;
+        top: 154px;
+        left: 31%;
+        width: 350px;
+        height: 350px;
+        border-radius: 95% 9% 130%;
+        background-color: burlywood;
+
+        .firstbase{
+          position: absolute;
+          top: 20px;
+          right: -2px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          z-index: 30;
+        }
+        .secondbase{
+          position: absolute;
+          top: 73px;
+          left: 71px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          z-index: 30;
+        }
+        .thirdbase{
+          position: absolute;
+          top: 331px;
+          left: 19px;
+          width: 20px;
+          height: 20px;
+          background-color: white;
+          z-index: 30;
+        }
+      }
+      .infield-area{
+        .rhombus{
+          position: absolute;
+          bottom: 14px;
+          left: 39%;
+          width: 230px;
+          height: 230px;
+          transform: rotate(-90deg) skew(10deg, 10deg);
+          background: rgb(25, 206, 25);
+          border: 30px solid burlywood;
+          border-radius: 20px;
+          background-image: repeating-linear-gradient(-30deg, rgb(25, 206, 25), rgb(25, 206, 25) 30px, rgb(112, 232, 112) 30px,rgb(112, 232, 112) 50px);
+          box-shadow: -20px 20px 10px -3px black;
+
+          .mound{
+            background-color: rgb(205, 136, 45);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            position:absolute;
+            top:37%;
+            left: 33%;
+
+            .plate{
+              width: 30px;
+              height: 7px;
+              background-color: white;
+              position: absolute;
+              top: 44%;
+              left: 31%;
+              transform: rotate(45deg);
+            }
+          }
+        }
+
+        .home-area{
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          background-color: burlywood;
+          border: 4px solid white;
+          border-radius: 50%;
+          z-index: 20;
+          bottom: 0;
+          right: 0;
+          box-shadow: 15px 15px 10px black;
+
+          .homebase{
+            position: absolute;
+            top: 43px;
+            left: 40px;
+            width: 15px;
+            height: 9px;
+            background-color: white;
+            transform: rotate(-45deg);
+            
+          }
+
+          .left-batterbox{
+            position: absolute;
+            top:46px;
+            left:18px;
+            border: 2px solid white;
+            width: 23px;
+            height: 38px;
+            transform: rotate(-45deg);
+          }
+          .right-batterbox{
+            position: absolute;
+            top:11px;
+            left: 53px;
+            border: 2px solid white;
+            width: 23px;
+            height: 38px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+      
+    }
+  }
+}
+
