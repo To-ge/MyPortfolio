@@ -15,7 +15,6 @@ const Music = () => {
       setToken(accessToken);
     }
   }, []);
-  console.log(token);
 
   return <div>{token ? <SearchMusic token={token} /> : <Login />}</div>;
 };

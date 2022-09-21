@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./priorityList.scss";
 import InfoIcon from "@mui/icons-material/Info";
 import CloseIcon from "@mui/icons-material/Close";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../redux/todoRedux";
 import { todoRequest } from "../../requestMethods";
 import styled from "styled-components";
 import ReturnTop from "../ReturnTop";
@@ -62,20 +60,17 @@ const PriorityList = () => {
   useEffect(() => {
     const getTodos = async () => {
       try {
-        const res = await todoRequest.get("/todos");
+        const res = await todoRequest.get("/");
         const descArr = res.data.sort(
           (a, b) => b.merit.length - a.merit.length
         );
         setTodos(descArr);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch {}
     };
     getTodos();
   }, []);
 
   const handleMove = (todo) => {
-    console.log(todo._id);
     navigation(`/priority/${todo._id}`, { state: { todo } });
   };
 
@@ -88,7 +83,6 @@ const PriorityList = () => {
   };
 
   useEffect(() => {
-    console.log(todos);
     let total = 0;
     for (let i = 0; i < todos.length; i++) {
       const meritLength = todos[i].merit.length;

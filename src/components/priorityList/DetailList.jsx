@@ -14,7 +14,6 @@ const DetailList = () => {
   const [meritInput, setMeritInput] = useState("");
   const [deleteInfo, setDeleteInfo] = useState(false);
   const [warnText, setWarnText] = useState(false);
-  const [deletedList, setDeletedList] = useState(false);
   const [id, setId] = useState(null);
   const [todoList, setTodoList] = useState(null);
   const dispatch = useDispatch();
@@ -36,21 +35,19 @@ const DetailList = () => {
   const addMerit = (e) => {
     e.preventDefault();
     setTodoList({ ...todoList, merit: [...todoList.merit, meritInput] });
-    console.log(todoList);
     setMeritInput("");
   };
 
   const deleteMerit = (index) => {
     todoList.merit.splice(index, 1);
     setTodoList({ ...todoList, merit: todoList.merit });
-    console.log(todoList);
     setDeleteInfo(null);
     setId(null);
   };
 
   const deleteList = async () => {
     try {
-      todoRequest.delete(`/todos/${todoList._id}`);
+      todoRequest.delete(`/${todoList._id}`);
       returnPage();
     } catch {}
   };
@@ -58,11 +55,10 @@ const DetailList = () => {
   useEffect(() => {
     const meritUpdate = async () => {
       try {
-        const res = await todoRequest.put(`/todos/${todoList._id}`, {
+        const res = await todoRequest.put(`/${todoList._id}`, {
           title: todoList.title,
           merit: todoList.merit,
         });
-        console.log(res);
         dispatch(updateTodo({ id: todoList._id, todo: res.data }));
       } catch {}
     };
@@ -71,7 +67,6 @@ const DetailList = () => {
 
   useEffect(() => {
     setDeleteInfo(true);
-    console.log(deleteInfo, id);
   }, [id]);
 
   return (
