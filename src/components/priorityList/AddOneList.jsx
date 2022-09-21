@@ -16,10 +16,9 @@ const AddOneList = () => {
   const navigation = useNavigate();
 
   useEffect(() => {
-    console.log(todoList);
     const addNewTodo = async () => {
       try {
-        const res = await todoRequest.post("/todos/add", todoList);
+        const res = await todoRequest.post("/add", todoList);
         setData(res);
       } catch {}
     };
@@ -27,7 +26,6 @@ const AddOneList = () => {
   }, [todoList]);
 
   useEffect(() => {
-    console.log(data);
     data && navigation("/priority");
   }, [data]);
 
@@ -38,7 +36,6 @@ const AddOneList = () => {
     } else {
       setMeritList((prev) => [...prev, inputMerit]);
       setInputMerit("");
-      console.log(meritList);
     }
   };
 

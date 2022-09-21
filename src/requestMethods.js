@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const TODO_URL = "https://togeportfolio.herokuapp.com/api/todos";
+const MLB_URL = "https://togeportfolio.herokuapp.com/api/mlb";
 
 export const todoRequest = axios.create({
-  baseURL: BASE_URL,
+  baseURL: TODO_URL,
 });
 export const mlbRequest = axios.create({
-  baseURL: BASE_URL,
+  baseURL: MLB_URL,
 });

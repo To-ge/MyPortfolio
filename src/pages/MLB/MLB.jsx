@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mlbRequest } from "../../requestMethods";
 import "./mlb.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -25,7 +25,7 @@ const Anime = () => {
   useEffect(() => {
     const getTeamData = () => {
       mlbRequest
-        .get("/mlb/teamdata")
+        .get("/teamdata")
         .then((res) => setPlayers(res.data))
         .catch((err) => console.log(err));
     };
@@ -33,7 +33,7 @@ const Anime = () => {
 
     const getSeasonStats = () => {
       mlbRequest
-        .get("/mlb/stats")
+        .get("/stats")
         .then((res) => setSeasonStats(res.data))
         .catch((err) => console.log(err));
     };
