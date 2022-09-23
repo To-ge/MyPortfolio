@@ -41,11 +41,13 @@ const Anime = () => {
   }, []);
 
   useEffect(() => {
+    // 選択した選手の情報を取得する
     const selectedPlayer = players?.find(
       (item) => item.YahooName === angelsMembers[fieldPlayer].name
     );
     const birthDate = selectedPlayer?.BirthDate.split("T");
     selectedPlayer &&
+      // 選手情報エリアに表示する
       setPositionPlayer({ ...selectedPlayer, BirthDate: birthDate[0] });
   }, [fieldPlayer]);
 
@@ -76,6 +78,7 @@ const Anime = () => {
           年のシーズンを元にしています。
         </div>
       </div>
+      {/* シーズン成績ボタン */}
       <div className="select-area">
         <div className="mvp-conflict" onClick={() => setMvpPanel(!mvpPanel)}>
           {!mvpPanel ? (
@@ -188,9 +191,12 @@ const Anime = () => {
           )}
         </div>
       </div>
+      {/* 野球グラウンド */}
       <div className="stadium">
+        {/* 外野 */}
         <div className="outfield-area">
           {fieldPlayer !== null && (
+            // 選択された選手の守備位置
             <PersonPinCircleIcon
               style={{
                 position: "absolute",
@@ -204,6 +210,7 @@ const Anime = () => {
               }}
             />
           )}
+          {/* 選手情報 */}
           {positionPlayer && (
             <div className="player-detail">
               <img src={positionPlayer.PhotoUrl} />
@@ -226,11 +233,13 @@ const Anime = () => {
               </ul>
             </div>
           )}
+          {/* 外野と内野の間 */}
           <div className="middlefield-area">
             <div className="firstbase"></div>
             <div className="secondbase"></div>
             <div className="thirdbase"></div>
           </div>
+          {/* 内野 */}
           <div className="infield-area">
             <div className="rhombus">
               <div className="mound">

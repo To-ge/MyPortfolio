@@ -16,6 +16,7 @@ const AddOneList = () => {
   const navigation = useNavigate();
 
   useEffect(() => {
+    // データベースに項目を登録
     const addNewTodo = async () => {
       try {
         const res = await todoRequest.post("/add", todoList);
@@ -26,9 +27,11 @@ const AddOneList = () => {
   }, [todoList]);
 
   useEffect(() => {
+    // 前のページに遷移
     data && navigation("/priority");
   }, [data]);
 
+  // メリット文を追加
   const addOneMerit = () => {
     setWarnInput(false);
     if (inputMerit === "") {
@@ -39,6 +42,7 @@ const AddOneList = () => {
     }
   };
 
+  // 項目の決定、不備があれば警告する
   const registerList = () => {
     if (inputTitle === "") {
       setAlertText("項目名を記入してください");
@@ -60,6 +64,7 @@ const AddOneList = () => {
           />
         </div>
         <div className="add-area">
+          {/* メリット文の追加 */}
           <div className="add-merit">
             <ArrowCircleRightIcon
               style={{ display: "inline-block", color: "gray" }}

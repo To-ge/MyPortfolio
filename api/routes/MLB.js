@@ -6,6 +6,7 @@ const playerProfile =
 const seasonStats =
   "https://api.sportsdata.io/v3/mlb/stats/json/PlayerSeasonStats";
 
+// 各チームの選手情報
 const getPlayerPlofile = () => {
   return axios
     .get(playerProfile, {
@@ -18,6 +19,8 @@ const getPlayerPlofile = () => {
     })
     .catch((err) => err);
 };
+
+// 指定したシーズンの成績
 const getSeasonStats = (season) => {
   return axios
     .get(`${seasonStats}/${season}`, {

@@ -21,23 +21,28 @@ const DetailList = () => {
   const navigation = useNavigate();
 
   useEffect(() => {
+    // 選択された項目の情報をセットする
     setTodoList(location.state.todo);
   }, []);
 
+  // 前のページに戻る
   const returnPage = () => {
     navigation("/priority");
   };
 
+  // メリット文のインデックスをセットする
   const clickDelete = (index) => {
     setId(index);
   };
 
+  // メリット文を追加する
   const addMerit = (e) => {
     e.preventDefault();
     setTodoList({ ...todoList, merit: [...todoList.merit, meritInput] });
     setMeritInput("");
   };
 
+  // メリット文を削除する
   const deleteMerit = (index) => {
     todoList.merit.splice(index, 1);
     setTodoList({ ...todoList, merit: todoList.merit });
@@ -45,6 +50,7 @@ const DetailList = () => {
     setId(null);
   };
 
+  // 項目自体を削除し前のページに戻る
   const deleteList = async () => {
     try {
       todoRequest.delete(`/${todoList._id}`);
@@ -53,6 +59,7 @@ const DetailList = () => {
   };
 
   useEffect(() => {
+    // メリット一覧が変更された時にデータベースの更新を行う
     const meritUpdate = async () => {
       try {
         const res = await todoRequest.put(`/${todoList._id}`, {
@@ -65,6 +72,7 @@ const DetailList = () => {
     meritUpdate();
   }, [todoList]);
 
+  // メリット文を削除するか問う
   useEffect(() => {
     setDeleteInfo(true);
   }, [id]);
@@ -72,6 +80,7 @@ const DetailList = () => {
   return (
     <div className="detail">
       <div className="detail-top">
+        {/* 前のページに戻るボタン */}
         <div className="return-button" onClick={returnPage}>
           <KeyboardDoubleArrowLeftIcon style={{ color: "gray" }} />
           <div>戻る</div>
@@ -93,6 +102,7 @@ const DetailList = () => {
             </div>
           </div>
         ) : (
+          // 項目の削除ボタン
           <div className="delete-list" onClick={() => setWarnText(true)}>
             <DeleteForeverIcon style={{ color: "red" }} />
             <div>削除</div>
@@ -105,6 +115,7 @@ const DetailList = () => {
             項目名: <span>{todoList?.title}</span>
           </div>
           <div className="add-list">
+            {/* メリット文の追加 */}
             <input
               type="text"
               placeholder="メリットに追加する文章を記入"
@@ -114,6 +125,7 @@ const DetailList = () => {
             <button onClick={addMerit}>追加</button>
           </div>
         </div>
+        {/* メリット一覧 */}
         <div className="merit-list">
           <div className="text">
             <h3>メリット</h3>
@@ -124,10 +136,12 @@ const DetailList = () => {
                 <StarsIcon style={{ color: "blue" }} />
                 {item}
                 <BackspaceOutlinedIcon
+                  // メリット文削除ボタン
                   style={{ color: "gray", fontSize: 15, cursor: "pointer" }}
                   onClick={() => clickDelete(index)}
                 />
                 {Boolean(deleteInfo & (id === index)) && (
+                  // 削除ボタンを押された文と同じ列に確認文を出す
                   <div className="warning">
                     <PlayArrowIcon
                       style={{
@@ -144,6 +158,7 @@ const DetailList = () => {
                     <div className="warnbottun">
                       <div
                         onClick={() => {
+                          // 確認文の非表示、インデックスのリセット
                           setDeleteInfo(false);
                           setId(null);
                         }}
