@@ -8,11 +8,8 @@ const cors = require("cors");
 
 dotenv.config();
 
-const buildPath = path.join(__dirname, "..", "build");
-app.use(express.static(buildPath));
-
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => console.log("DB connection successfull."))
   .catch((err) => console.log(err));
 
