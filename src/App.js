@@ -1,10 +1,5 @@
 import Home from "./pages/home/Home";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Music from "./pages/music/Music";
 import MLB from "./pages/MLB/MLB";
 import PriorityList from "./components/priorityList/PriorityList";
