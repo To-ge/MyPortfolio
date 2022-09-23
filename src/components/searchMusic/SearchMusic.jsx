@@ -18,6 +18,7 @@ const SearchMusic = ({ token }) => {
     []
   );
 
+  // 楽曲情報のスタイル
   const musicStyle = useMemo(
     () => [
       ["start", "center", "end"],
@@ -34,8 +35,10 @@ const SearchMusic = ({ token }) => {
   );
 
   useEffect(() => {
+    // 検索されたアーティストのアルバム情報を取得
     const getSearch = async () => {
       try {
+        // 1. アーティスト情報の取得
         const res = await axios.get(
           "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
           {
@@ -48,6 +51,7 @@ const SearchMusic = ({ token }) => {
         const artistId = res.data.artists.items[0].id;
         console.log(artistId);
 
+        // 2. アーティストIDを元にアルバムを取得
         const albums = await axios.get(
           "https://api.spotify.com/v1/artists/" + artistId + "/albums",
           {
@@ -67,6 +71,7 @@ const SearchMusic = ({ token }) => {
 
   useEffect(() => {
     if (albumId) {
+      // アルバムの収録楽曲（トラック）を取得
       const searchTracks = async () => {
         try {
           const tracksRes = await axios.get(
@@ -80,7 +85,6 @@ const SearchMusic = ({ token }) => {
           );
 
           const tracks = tracksRes.data.items;
-          console.log(tracks);
 
           setTracksData(tracks);
         } catch {}
@@ -88,8 +92,8 @@ const SearchMusic = ({ token }) => {
       searchTracks();
     }
   }, [albumId]);
-  console.log(tracksData);
 
+  // 選択されたアルバムIDをもとにトラックを表示
   const handleShowTracks = (id) => {
     setShowTrack(!showTrack);
     setAlbumId(id);
@@ -154,6 +158,7 @@ const SearchMusic = ({ token }) => {
         </div>
       </div>
 
+      {/* 検索結果一覧 */}
       <div className="data-row">
         {searchData &&
           searchData.map((item) => (
@@ -162,6 +167,7 @@ const SearchMusic = ({ token }) => {
               className="search-data"
               onClick={() => handleShowTracks(item.id)}
             >
+              {/* トラック情報 */}
               {(albumId === item.id) & showTrack ? (
                 <div className="panel">
                   <h3>Tracks</h3>
@@ -170,14 +176,17 @@ const SearchMusic = ({ token }) => {
                       <div
                         className="music-item"
                         style={{
+                          // 曲名が長いほどフォントサイズは小さくなる
                           fontSize: Math.floor(
                             230 /
                               (tracksData.length + track.name.split("").length)
                           ),
+                          // 曲名の文字数を3で割った余りでテキストの位置（左、真ん中、右）を分散させる
                           justifyContent:
                             musicStyle[0][
                               track.name.split("").length % musicStyle[0].length
                             ],
+                          // 曲名の文字数を6で割った余りでカラーを決める
                           color:
                             musicStyle[1][
                               track.name.split("").length % musicStyle[1].length
@@ -191,6 +200,7 @@ const SearchMusic = ({ token }) => {
                 </div>
               ) : (
                 <>
+                  {/* アルバム情報 */}
                   <p>{item.name}</p>
                   <div className="data-img">
                     <img src={item.images[1].url} name={item.id} />
