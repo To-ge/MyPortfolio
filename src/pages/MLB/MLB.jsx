@@ -31,13 +31,13 @@ const Anime = () => {
     };
     getTeamData();
 
-    const getSeasonStats = () => {
-      mlbRequest
-        .get("/stats")
-        .then((res) => setSeasonStats(res.data))
-        .catch((err) => console.log(err));
-    };
-    getSeasonStats();
+    // const getSeasonStats = () => {
+    //   mlbRequest
+    //     .get("/stats")
+    //     .then((res) => setSeasonStats(res.data))
+    //     .catch((err) => console.log(err));
+    // };
+    // getSeasonStats();
   }, []);
 
   useEffect(() => {
