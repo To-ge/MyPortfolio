@@ -8,6 +8,9 @@ const cors = require("cors");
 
 dotenv.config();
 
+const buildPath = path.join(__dirname, "..", "build");
+app.use(express.static(buildPath));
+
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("DB connection successfull."))
