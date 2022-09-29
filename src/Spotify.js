@@ -1,6 +1,6 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "https://togeportfolio.herokuapp.com/music";
+const redirectUri = "http://localhost:3000/music";
 
 const clientId = "f82fb6a4ba4c4d4eb28404726fcc8509";
 
