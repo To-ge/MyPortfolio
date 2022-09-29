@@ -49,7 +49,6 @@ const SearchMusic = ({ token }) => {
           }
         );
         const artistId = res.data.artists.items[0].id;
-        console.log(artistId);
 
         // 2. アーティストIDを元にアルバムを取得
         const albums = await axios.get(
@@ -61,7 +60,6 @@ const SearchMusic = ({ token }) => {
             },
           }
         );
-        console.log(albums.data.items);
         setSearchData(albums.data.items);
       } catch {}
     };
