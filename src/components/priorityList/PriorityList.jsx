@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./priorityList.scss";
 import InfoIcon from "@mui/icons-material/Info";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
 import { todoRequest } from "../../requestMethods";
 import styled from "styled-components";
 import ReturnTop from "../ReturnTop";
@@ -52,7 +51,6 @@ const PriorityList = () => {
   const [todos, setTodos] = useState([]);
   const [warnText, setWarnText] = useState(false);
   const [totalMerit, setTotalMerit] = useState(0);
-  const dispatch = useDispatch();
   const navigation = useNavigate();
 
   // 5つまで作れる項目の円グラフ表示の時の色
